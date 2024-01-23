@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -19,10 +21,18 @@ public class Book {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String author;
+
+    @Column
     private String title;
+
+    @Column
     private String isbn;
 
+    @OneToMany(mappedBy = "book")
+    private List<Loan> loans;
 
     }
 
